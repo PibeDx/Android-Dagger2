@@ -1,11 +1,9 @@
 package com.josecuentas.android_dagger2.view.activity;
 
-import android.os.Bundle;
 import android.util.Log;
 
+import com.josecuentas.android_dagger2.Dagger2Application;
 import com.josecuentas.android_dagger2.R;
-import com.josecuentas.android_dagger2.di.DaggerUsersComponent;
-import com.josecuentas.android_dagger2.di.UsersModule;
 import com.josecuentas.android_dagger2.domain.model.User;
 import com.josecuentas.android_dagger2.presenter.UserPresenter;
 
@@ -35,15 +33,8 @@ public class MainActivity extends BaseActivity implements UserPresenter.View {
     }
 
     private void initializeDagger() {
-        DaggerUsersComponent.builder().usersModule(new UsersModule())
-                .build()
-                .inject(this);
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        Dagger2Application app = (Dagger2Application) getApplication();
+        app.getUsersComponent().inject(this);
     }
 
     @Override public void showUsers(List<User> users) {
