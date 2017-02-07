@@ -17,7 +17,7 @@ public class Dagger2Application extends Application {
     @Override public void onCreate() {
         super.onCreate();
 
-        mUsersComponent = DaggerUsersComponent.builder().usersModule(new UsersModule()).build();
+        mUsersComponent = DaggerUsersComponent.builder().usersModule(new UsersModule(this)).build();
     }
 
     public UsersComponent getUsersComponent() {

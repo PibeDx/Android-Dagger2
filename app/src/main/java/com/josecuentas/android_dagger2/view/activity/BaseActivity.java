@@ -26,8 +26,8 @@ public abstract class BaseActivity extends AppCompatActivity implements Presente
         setContentView(getLayoutResID());
         bindViews();
         onPrepareSupportActionBar();
-        onPreparePresenter();
         onPrepareActivity();
+        onPreparePresenter();
     }
 
     protected void onPrepareSupportActionBar() {
