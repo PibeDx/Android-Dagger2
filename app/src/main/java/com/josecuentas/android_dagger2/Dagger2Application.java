@@ -3,6 +3,7 @@ package com.josecuentas.android_dagger2;
 import android.app.Application;
 
 import com.josecuentas.android_dagger2.di.DaggerUsersComponent;
+import com.josecuentas.android_dagger2.di.RootModule;
 import com.josecuentas.android_dagger2.di.UsersComponent;
 import com.josecuentas.android_dagger2.di.UsersModule;
 
@@ -17,7 +18,9 @@ public class Dagger2Application extends Application {
     @Override public void onCreate() {
         super.onCreate();
 
-        mUsersComponent = DaggerUsersComponent.builder().usersModule(new UsersModule(this)).build();
+        mUsersComponent = DaggerUsersComponent.builder()
+                .usersModule(new UsersModule())
+                .rootModule(new RootModule(this)).build();
     }
 
     public UsersComponent getUsersComponent() {

@@ -10,6 +10,6 @@ import dagger.Component;
  * Created by jcuentas on 6/02/17.
  */
 
-@Singleton @Component (modules = UsersModule.class) public interface UsersComponent {
+@Singleton @Component (modules = {UsersModule.class, RootModule.class}) public interface UsersComponent {
     void inject(MainActivity mainActivity);
 }

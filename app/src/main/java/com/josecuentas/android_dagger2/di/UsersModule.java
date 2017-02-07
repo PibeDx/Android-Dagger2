@@ -1,6 +1,5 @@
 package com.josecuentas.android_dagger2.di;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 
 import com.josecuentas.android_dagger2.data.DataSource;
@@ -18,12 +17,6 @@ import dagger.Provides;
 
 @Module public class UsersModule {
 
-    private final Context context;
-
-    public UsersModule(Context context) {
-        this.context = context;
-    }
-
     @Provides DataSource provideUserDataSource() {
         return new UserDataSource();
     }
@@ -34,13 +27,5 @@ import dagger.Provides;
 
     @Provides ItemAdapter provideItemAdapter(LayoutInflater layoutInflater) {
         return new ItemAdapter(layoutInflater);
-    }
-
-    @Provides Context proviceApplicationContext(){
-        return context;
-    }
-
-    @Provides LayoutInflater provideLayoutInflater() {
-        return LayoutInflater.from(context);
     }
 }
